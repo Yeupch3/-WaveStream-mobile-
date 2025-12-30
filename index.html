@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Styles identiques à la version précédente */
         :root {
             --primary: #e50914;
             --primary-dark: #b00710;
@@ -450,6 +451,39 @@
             opacity: 0.5;
         }
 
+        /* Proxy Settings */
+        .proxy-settings {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+
+        .proxy-settings h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .proxy-input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid var(--gray);
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .proxy-option {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .proxy-option input {
+            margin-right: 10px;
+        }
+
         /* Mobile Optimizations */
         @media (max-width: 480px) {
             .app-header {
@@ -487,9 +521,6 @@
             }
         }
     </style>
-    
-    <!-- Inline PWA Manifest -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIldhdmVTdHJlYW0gSVBUViIsCiAgInNob3J0X25hbWUiOiAiV2F2ZVN0cmVhbSIsCiAgImRlc2NyaXB0aW9uIjogIkxlY3RldXIgSVBUViBhdmVjIHN1cHBvcnQgTTNVL00zVTgiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzBhMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiNlNTA5MTQiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9mbGF0aWNvbnMvaWNvbnMvdHYuc3ZnIiwKICAgICAgInNpemVzIjogIjcyeDcyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2ZsYXRpY29ucy9pY29ucy90di5zdmciLAogICAgICAic2l6ZXMiOiAiOTZ4OTYiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvZ2gvZmxhdGljb25zL2ljb25zL3R2LnN2ZyIsCiAgICAgICJzaXplcyI6ICIxMjh4MTI4IiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2ZsYXRpY29ucy9pY29ucy90di5zdmciLAogICAgICAic2l6ZXMiOiAiMTQ0eDE0NCIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9mbGF0aWNvbnMvaWNvbnMvdHYuc3ZnIiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvZ2gvZmxhdGljb25zL2ljb25zL3R2LnN2ZyIsCiAgICAgICJzaXplcyI6ICIzODR4Mzg0IiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2ZsYXRpY29ucy9pY29ucy90di5zdmciLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -503,7 +534,7 @@
     <header class="app-header">
         <div class="logo-container">
             <div class="logo">WaveStream🏴‍☠️</div>
-            <span class="app-version">v1.0</span>
+            <span class="app-version">v2.0</span>
         </div>
         <div class="status-bar">
             <span id="currentTime">--:--</span>
@@ -529,6 +560,7 @@
                 preload="auto"
                 playsinline
                 webkit-playsinline
+                crossorigin="anonymous"
                 data-setup='{"fluid": true, "liveui": true, "playbackRates": [0.5, 1, 1.5, 2]}'
                 poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHZpZXdCb3g9IjAgMCAxMjgwIDcyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNNDgwIDI4MEw2NDAgNDAwIDQ4MCA1MjBWMjgwWiIgZmlsbD0iI2U1MDkxNCIvPjwvc3ZnPg=="
             >
@@ -607,28 +639,57 @@
             </button>
         </div>
         
+        <!-- PROXY SETTINGS - NOUVEAU -->
+        <div class="proxy-settings">
+            <h4><i class="fas fa-shield-alt"></i> Proxy & CORS</h4>
+            
+            <div class="proxy-option">
+                <input type="radio" id="proxyNone" name="proxyType" value="none" checked>
+                <label for="proxyNone">Aucun proxy (flux directs)</label>
+            </div>
+            
+            <div class="proxy-option">
+                <input type="radio" id="proxyHTTPS" name="proxyType" value="https">
+                <label for="proxyHTTPS">Forcer HTTPS (convertir HTTP→HTTPS)</label>
+            </div>
+            
+            <div class="proxy-option">
+                <input type="radio" id="proxyCustom" name="proxyType" value="custom">
+                <label for="proxyCustom">Proxy personnalisé</label>
+            </div>
+            
+            <input type="text" id="customProxyUrl" class="proxy-input" placeholder="https://votre-proxy.com/?url=" disabled>
+            
+            <div style="margin-top: 10px; font-size: 12px; color: var(--text-secondary);">
+                <i class="fas fa-info-circle"></i> Utilisez un proxy CORS si les flux ne se chargent pas.
+            </div>
+            
+            <button class="control-btn" style="margin-top: 10px; width: 100%;" id="btnTestProxy">
+                <i class="fas fa-vial"></i> Tester le proxy
+            </button>
+        </div>
+        
         <div class="menu-section">
             <h4 style="margin-bottom: 15px; color: var(--text);">Informations</h4>
             
             <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 10px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                     <span>Version:</span>
-                    <span>1.0.0</span>
+                    <span>2.0.0</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                     <span>Chaînes:</span>
                     <span id="menuChannelCount">0</span>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
-                    <span>Dernière mise à jour:</span>
-                    <span id="lastUpdate">--/--/----</span>
+                    <span>Mode proxy:</span>
+                    <span id="proxyStatus">Aucun</span>
                 </div>
             </div>
         </div>
         
-        <button class="control-btn primary" style="margin-top: 20px;" id="btnCloseMenu">
-            <i class="fas fa-times"></i>
-            Fermer
+        <button class="control-btn primary" style="margin-top: 20px; width: 100%;" id="btnCloseMenu">
+            <i class="fas fa-times"></i> Fermer
         </button>
     </div>
 
@@ -648,6 +709,10 @@
         let currentChannel = null;
         let deferredPrompt = null;
         let playlistsCache = [];
+        let proxyConfig = {
+            type: 'none',
+            customUrl: ''
+        };
         
         // Initialisation
         document.addEventListener('DOMContentLoaded', async () => {
@@ -656,7 +721,10 @@
         
         async function initializeApp() {
             try {
-                // Initialiser Video.js
+                // Charger la configuration du proxy
+                loadProxyConfig();
+                
+                // Initialiser Video.js avec CORS
                 player = videojs('my-player', {
                     controls: true,
                     autoplay: false,
@@ -668,13 +736,22 @@
                         hls: {
                             enableLowInitialPlaylist: true,
                             smoothQualityChange: true,
-                            overrideNative: true
-                        }
+                            overrideNative: true,
+                            withCredentials: false
+                        },
+                        nativeAudioTracks: false,
+                        nativeVideoTracks: false
                     }
                 });
                 
+                // Configurer CORS pour le player
+                player.tech().el().crossOrigin = 'anonymous';
+                
                 // Gérer les erreurs
                 player.on('error', handlePlayerError);
+                player.on('loadstart', () => {
+                    console.log('Chargement du flux commencé');
+                });
                 
                 // Charger les playlists sauvegardées
                 await loadSavedPlaylists();
@@ -696,8 +773,10 @@
                 
                 showToast('Application prête !', 'success');
                 
-                // Inline Service Worker Registration
-                registerServiceWorker();
+                // Service Worker (uniquement si HTTPS)
+                if (location.protocol === 'https:') {
+                    registerServiceWorker();
+                }
                 
             } catch (error) {
                 console.error('Erreur initialisation:', error);
@@ -742,6 +821,17 @@
             document.getElementById('btnClearCache').addEventListener('click', clearCache);
             document.getElementById('btnExportPlaylist').addEventListener('click', exportPlaylist);
             document.getElementById('btnInstallApp').addEventListener('click', installPWA);
+            document.getElementById('btnTestProxy').addEventListener('click', testProxy);
+            
+            // Configuration du proxy
+            document.querySelectorAll('input[name="proxyType"]').forEach(radio => {
+                radio.addEventListener('change', updateProxyConfig);
+            });
+            
+            document.getElementById('customProxyUrl').addEventListener('input', (e) => {
+                proxyConfig.customUrl = e.target.value;
+                saveProxyConfig();
+            });
             
             // Recherche
             document.getElementById('searchInput').addEventListener('input', handleSearch);
@@ -761,16 +851,103 @@
             // Touches clavier
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') closeMenu();
-                if (e.key === 'F11') player.requestFullscreen();
             });
         }
         
-        // Fonction generateChannelId corrigée (sans btoa)
+        // Gestion du proxy
+        function loadProxyConfig() {
+            const saved = localStorage.getItem('proxyConfig');
+            if (saved) {
+                proxyConfig = JSON.parse(saved);
+                
+                // Mettre à jour l'interface
+                document.querySelector(`input[name="proxyType"][value="${proxyConfig.type}"]`).checked = true;
+                document.getElementById('customProxyUrl').value = proxyConfig.customUrl || '';
+                
+                if (proxyConfig.type === 'custom') {
+                    document.getElementById('customProxyUrl').disabled = false;
+                }
+                
+                updateProxyStatus();
+            }
+        }
+        
+        function saveProxyConfig() {
+            localStorage.setItem('proxyConfig', JSON.stringify(proxyConfig));
+            updateProxyStatus();
+        }
+        
+        function updateProxyConfig(e) {
+            proxyConfig.type = e.target.value;
+            
+            if (proxyConfig.type === 'custom') {
+                document.getElementById('customProxyUrl').disabled = false;
+            } else {
+                document.getElementById('customProxyUrl').disabled = true;
+            }
+            
+            saveProxyConfig();
+        }
+        
+        function updateProxyStatus() {
+            const statusMap = {
+                'none': 'Aucun',
+                'https': 'HTTPS Forcé',
+                'custom': 'Proxy Personnalisé'
+            };
+            document.getElementById('proxyStatus').textContent = statusMap[proxyConfig.type] || 'Inconnu';
+        }
+        
+        // Appliquer le proxy à une URL
+        function applyProxy(url) {
+            if (!url) return url;
+            
+            switch (proxyConfig.type) {
+                case 'https':
+                    // Convertir HTTP en HTTPS
+                    return url.replace(/^http:\/\//i, 'https://');
+                
+                case 'custom':
+                    if (proxyConfig.customUrl) {
+                        // Encoder l'URL pour le proxy
+                        const encodedUrl = encodeURIComponent(url);
+                        return proxyConfig.customUrl + encodedUrl;
+                    }
+                    return url;
+                
+                case 'none':
+                default:
+                    return url;
+            }
+        }
+        
+        // Tester le proxy
+        async function testProxy() {
+            const testUrl = 'http://example.com/test.m3u8';
+            const proxiedUrl = applyProxy(testUrl);
+            
+            showToast(`Test: ${proxiedUrl.substring(0, 50)}...`, 'info');
+            
+            try {
+                const response = await fetch(proxiedUrl, { 
+                    method: 'HEAD',
+                    mode: 'cors'
+                });
+                
+                if (response.ok) {
+                    showToast('Proxy fonctionnel !', 'success');
+                } else {
+                    showToast('Proxy erreur: ' + response.status, 'error');
+                }
+            } catch (error) {
+                showToast('Proxy échec: ' + error.message, 'error');
+            }
+        }
+        
+        // Fonction generateChannelId corrigée
         function generateChannelId(name, url) {
-            // Créer un hash robuste sans btoa
             let hash = 0;
             
-            // Nettoyer le nom des caractères non-ASCII
             const cleanName = name
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, '')
@@ -784,7 +961,6 @@
                 hash = hash & hash;
             }
             
-            // Extraire une partie de l'URL pour plus d'unicité
             const urlPart = url.split('//')[1]?.split('/')[0]?.replace(/[^a-z0-9]/gi, '').substring(0, 6) || 'url';
             const namePart = cleanName.substring(0, 3).replace(/[^a-z0-9]/gi, 'ch');
             
@@ -795,32 +971,33 @@
             const files = event.target.files;
             if (!files.length) return;
             
-            showToast(`Chargement de ${files.length} fichier(s)...`, 'success');
+            showToast(`Chargement de ${files.length} fichier(s)...`, 'info');
             
             for (let file of files) {
                 try {
                     const content = await readFileAsText(file);
                     const playlist = parseM3U(content, file.name);
                     
-                    // Sauvegarder dans le cache
-                    savePlaylistToCache(playlist);
+                    // Appliquer le proxy aux URLs des chaînes
+                    playlist.channels = playlist.channels.map(channel => ({
+                        ...channel,
+                        originalUrl: channel.url,
+                        url: applyProxy(channel.url)
+                    }));
                     
-                    // Ajouter aux chaînes
+                    savePlaylistToCache(playlist);
                     allChannels = [...allChannels, ...playlist.channels];
                     
                     showToast(`${playlist.channels.length} chaînes ajoutées`, 'success');
                     
                 } catch (error) {
                     console.error('Erreur chargement:', error);
-                    showToast(`Erreur avec ${file.name}`, 'error');
+                    showToast(`Erreur avec ${file.name}: ${error.message}`, 'error');
                 }
             }
             
-            // Mettre à jour l'affichage
             updateChannelList(allChannels);
             updateChannelCount();
-            
-            // Réinitialiser l'input
             event.target.value = '';
         }
         
@@ -834,19 +1011,16 @@
                 line = line.trim();
                 
                 if (line.startsWith('#EXTINF:')) {
-                    // Extraire nom
                     const lastCommaIndex = line.lastIndexOf(',');
                     let channelName = lastCommaIndex !== -1 ? 
                         line.substring(lastCommaIndex + 1).trim() : 'Chaîne inconnue';
                     
-                    // Nettoyer le nom
                     channelName = channelName
                         .normalize('NFD')
                         .replace(/[\u0300-\u036f]/g, '')
                         .replace(/[^\x00-\xFF]/g, ' ')
                         .trim();
                     
-                    // Extraire logo
                     const logoMatch = line.match(/tvg-logo="([^"]*)"/i);
                     let logoUrl = null;
                     if (logoMatch && logoMatch[1]) {
@@ -857,7 +1031,6 @@
                         }
                     }
                     
-                    // Extraire groupe
                     const groupMatch = line.match(/group-title="([^"]*)"/i);
                     const channelGroup = groupMatch ? groupMatch[1] : group;
                     
@@ -897,7 +1070,6 @@
                 return;
             }
             
-            // Grouper par catégorie
             const groups = {};
             channels.forEach(channel => {
                 if (!groups[channel.group]) {
@@ -919,17 +1091,21 @@
                 groupChannels.forEach(channel => {
                     const isActive = currentChannel && currentChannel.id === channel.id;
                     
-                    // Gestion des logos avec fallback
                     let logoHtml = '';
                     if (channel.logo) {
                         logoHtml = `
                             <img src="${channel.logo}" alt="${channel.name}"
                                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\"fallback\"><i class=\"fas fa-tv\"></i></div>';"
+                                 crossorigin="anonymous"
                                  loading="lazy">
                         `;
                     } else {
                         logoHtml = '<div class="fallback"><i class="fas fa-tv"></i></div>';
                     }
+                    
+                    // Afficher si l'URL a été modifiée par le proxy
+                    const proxyIndicator = channel.originalUrl && channel.originalUrl !== channel.url ? 
+                        '<span style="color: var(--primary); font-size: 10px;">(proxy)</span>' : '';
                     
                     html += `
                         <div class="channel-item ${isActive ? 'active playing' : ''}" 
@@ -939,8 +1115,13 @@
                                 ${logoHtml}
                             </div>
                             <div class="channel-info">
-                                <div class="channel-name">${channel.name}</div>
+                                <div class="channel-name">
+                                    ${channel.name} ${proxyIndicator}
+                                </div>
                                 <div class="channel-group">${channel.group}</div>
+                                <div style="font-size: 10px; color: var(--text-secondary); margin-top: 2px;">
+                                    ${channel.url.substring(0, 40)}...
+                                </div>
                             </div>
                         </div>
                     `;
@@ -950,7 +1131,6 @@
             container.innerHTML = html;
         }
         
-        // Fonction globale pour sélectionner une chaîne
         window.selectChannel = function(channelId) {
             const channel = allChannels.find(c => c.id === channelId);
             if (!channel) return;
@@ -964,45 +1144,84 @@
             }
             
             currentChannel = channel;
-            
-            // Mettre à jour l'interface
             document.getElementById('videoOverlay').classList.add('hidden');
             updateChannelList(allChannels);
             
-            // Charger la vidéo
-            try {
-                player.src({
-                    src: channel.url,
-                    type: 'application/x-mpegURL'
-                });
-                
-                player.play().catch(e => {
-                    console.log('Lecture nécessite interaction');
-                    showToast('Cliquez sur le bouton lecture', 'warning');
-                });
-                
-                // Sauvegarder la dernière chaîne
-                localStorage.setItem('lastChannel', JSON.stringify(channel));
-                
-                showToast(`Chargement: ${channel.name}`, 'success');
-                
-            } catch (error) {
-                console.error('Erreur chargement:', error);
-                showToast(`Erreur: ${error.message}`, 'error');
+            // Afficher l'URL utilisée (avec proxy si applicable)
+            console.log('Chargement URL:', channel.url);
+            if (channel.originalUrl && channel.originalUrl !== channel.url) {
+                console.log('URL originale:', channel.originalUrl);
             }
+            
+            // Précharger avec timeout pour éviter blocage
+            setTimeout(() => {
+                try {
+                    // Configurer avec CORS explicitement
+                    const techOptions = {
+                        crossorigin: 'anonymous',
+                        withCredentials: false
+                    };
+                    
+                    player.src({
+                        src: channel.url,
+                        type: 'application/x-mpegURL',
+                        crossOrigin: 'anonymous'
+                    });
+                    
+                    player.tech().el().crossOrigin = 'anonymous';
+                    
+                    player.play().catch(e => {
+                        console.log('Lecture nécessite interaction:', e);
+                        showToast('Cliquez sur le bouton lecture', 'warning');
+                    });
+                    
+                    localStorage.setItem('lastChannel', JSON.stringify(channel));
+                    showToast(`Chargement: ${channel.name}`, 'success');
+                    
+                } catch (error) {
+                    console.error('Erreur chargement:', error);
+                    showToast(`Erreur: ${error.message}`, 'error');
+                    
+                    // Essayer avec l'URL originale si proxy échoue
+                    if (channel.originalUrl && channel.originalUrl !== channel.url) {
+                        showToast('Essai avec URL originale...', 'info');
+                        setTimeout(() => {
+                            player.src({
+                                src: channel.originalUrl,
+                                type: 'application/x-mpegURL'
+                            });
+                        }, 1000);
+                    }
+                }
+            }, 100);
         }
         
         function handlePlayerError() {
             const error = player.error();
             console.error('Erreur player:', error);
             
-            if (error && error.code === 4) {
-                showToast('Format non supporté, essai suivant...', 'warning');
+            if (error) {
+                let errorMsg = 'Erreur de lecture';
                 
-                if (allChannels.length > 1) {
+                switch(error.code) {
+                    case 1: errorMsg = 'Ressource annulée'; break;
+                    case 2: errorMsg = 'Erreur réseau'; break;
+                    case 3: errorMsg = 'Erreur décodage'; break;
+                    case 4: errorMsg = 'Format non supporté'; break;
+                    case 5: errorMsg = 'Chiffrement non supporté'; break;
+                }
+                
+                showToast(`${errorMsg}. Essai suivant...`, 'error');
+                
+                // Essayer la chaîne suivante
+                if (allChannels.length > 1 && currentChannel) {
                     const currentIndex = allChannels.findIndex(c => c.id === currentChannel.id);
                     const nextIndex = (currentIndex + 1) % allChannels.length;
-                    loadChannel(allChannels[nextIndex]);
+                    
+                    // Attendre avant de réessayer
+                    setTimeout(() => {
+                        loadChannel(allChannels[nextIndex]);
+                    }, 2000);
                 }
             }
         }
@@ -1027,7 +1246,7 @@
             document.getElementById('sideMenu').classList.add('active');
             document.getElementById('menuOverlay').classList.add('active');
             document.getElementById('menuChannelCount').textContent = allChannels.length;
-            document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString();
+            updateProxyStatus();
         }
         
         function closeMenu() {
@@ -1053,15 +1272,15 @@
                 return;
             }
             
-            // Créer fichier M3U
             let m3uContent = '#EXTM3U\n';
             
             allChannels.forEach(channel => {
+                // Utiliser l'URL originale si disponible
+                const url = channel.originalUrl || channel.url;
                 m3uContent += `#EXTINF:-1 tvg-logo="${channel.logo || ''}" group-title="${channel.group}",${channel.name}\n`;
-                m3uContent += `${channel.url}\n`;
+                m3uContent += `${url}\n`;
             });
             
-            // Télécharger
             const blob = new Blob([m3uContent], { type: 'audio/x-mpegurl' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -1113,13 +1332,17 @@
                 if (saved) {
                     playlistsCache = JSON.parse(saved);
                     
-                    // Reconstruire allChannels
                     allChannels = [];
                     playlistsCache.forEach(playlist => {
-                        allChannels = [...allChannels, ...playlist.channels];
+                        // Appliquer le proxy aux URLs sauvegardées
+                        const channelsWithProxy = playlist.channels.map(channel => ({
+                            ...channel,
+                            originalUrl: channel.url,
+                            url: applyProxy(channel.url)
+                        }));
+                        allChannels = [...allChannels, ...channelsWithProxy];
                     });
                     
-                    // Charger dernière chaîne
                     const lastChannel = localStorage.getItem('lastChannel');
                     if (lastChannel) {
                         const channel = JSON.parse(lastChannel);
@@ -1175,12 +1398,11 @@
         // Service Worker inline
         function registerServiceWorker() {
             if ('serviceWorker' in navigator) {
-                // Créer un Service Worker inline
                 const swContent = `
 self.addEventListener('install', event => {
   console.log('[Service Worker] Installation');
   event.waitUntil(
-    caches.open('wavestream-v1').then(cache => {
+    caches.open('wavestream-v2').then(cache => {
       return cache.addAll([
         './',
         'https://vjs.zencdn.net/8.6.1/video.min.js',
@@ -1212,7 +1434,6 @@ self.addEventListener('fetch', event => {
 });
                 `;
                 
-                // Créer un blob URL pour le Service Worker
                 const blob = new Blob([swContent], { type: 'application/javascript' });
                 const swURL = URL.createObjectURL(blob);
                 
