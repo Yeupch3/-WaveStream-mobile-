@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- PWA Meta Tags -->
+    <!-- PWA Configuration -->
     <meta name="theme-color" content="#e50914">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -12,18 +12,9 @@
     <meta name="application-name" content="WaveStream">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="msapplication-TileColor" content="#e50914">
-    <meta name="msapplication-starturl" content="/">
     <meta name="format-detection" content="telephone=no">
     
-    <!-- Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Icons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512x512.png">
-    <link rel="apple-touch-icon" href="icons/icon-180x180.png">
-    
-    <title>WaveStream IPTV</title>
+    <title>WaveStream IPTV PWA</title>
     
     <!-- Video.js -->
     <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
@@ -64,7 +55,7 @@
             width: 100%;
         }
 
-        /* En-tête PWA */
+        /* App Header */
         .app-header {
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
             padding: 12px 15px;
@@ -100,7 +91,7 @@
             border-radius: 10px;
         }
 
-        /* Barre d'état */
+        /* Status Bar */
         .status-bar {
             display: flex;
             align-items: center;
@@ -116,7 +107,7 @@
             font-weight: bold;
         }
 
-        /* Conteneur principal mobile */
+        /* Main Container */
         .app-container {
             display: flex;
             flex-direction: column;
@@ -124,7 +115,7 @@
             overflow: hidden;
         }
 
-        /* Lecteur vidéo */
+        /* Video Player */
         .video-container {
             position: relative;
             width: 100%;
@@ -134,7 +125,7 @@
 
         #my-player {
             width: 100% !important;
-            height: 56.25vw !important; /* 16:9 ratio */
+            height: 56.25vw !important;
             max-height: 50vh;
         }
 
@@ -159,7 +150,7 @@
             display: none;
         }
 
-        /* Barre de contrôle rapide */
+        /* Quick Controls */
         .quick-controls {
             display: flex;
             padding: 10px 15px;
@@ -197,7 +188,7 @@
             background: var(--primary-dark);
         }
 
-        /* Barre de recherche */
+        /* Search */
         .search-container {
             padding: 15px;
             background: rgba(20,20,20,0.95);
@@ -225,7 +216,7 @@
             color: rgba(255,255,255,0.5);
         }
 
-        /* Conteneur de la playlist */
+        /* Playlist */
         .playlist-container {
             flex: 1;
             overflow-y: auto;
@@ -233,7 +224,6 @@
             background: linear-gradient(180deg, var(--dark) 0%, #000 100%);
         }
 
-        /* Liste des chaînes */
         .channel-list {
             padding: 10px;
             display: grid;
@@ -314,19 +304,7 @@
             color: var(--text-secondary);
         }
 
-        .channel-status {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--success);
-            margin-left: auto;
-        }
-
-        .channel-status.offline {
-            background: var(--danger);
-        }
-
-        /* Menu flottant */
+        /* Floating Menu */
         .floating-menu {
             position: fixed;
             bottom: 20px;
@@ -355,14 +333,13 @@
 
         .floating-btn:active {
             transform: scale(0.9);
-            box-shadow: 0 2px 8px rgba(229, 9, 20, 0.4);
         }
 
         .floating-btn.secondary {
             background: var(--gray-light);
         }
 
-        /* Menu latéral */
+        /* Side Menu */
         .side-menu {
             position: fixed;
             top: 0;
@@ -396,7 +373,7 @@
             display: block;
         }
 
-        /* Écran de chargement */
+        /* Loading */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -431,7 +408,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Toast notifications */
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -460,7 +437,7 @@
             border-left: 4px solid var(--danger);
         }
 
-        /* État vide */
+        /* Empty State */
         .empty-state {
             text-align: center;
             padding: 50px 20px;
@@ -473,23 +450,7 @@
             opacity: 0.5;
         }
 
-        /* Mode plein écran */
-        .fullscreen-mode {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #000;
-            z-index: 10000;
-            display: none;
-        }
-
-        .fullscreen-mode.active {
-            display: block;
-        }
-
-        /* Optimisations mobiles */
+        /* Mobile Optimizations */
         @media (max-width: 480px) {
             .app-header {
                 padding: 10px 12px;
@@ -515,7 +476,6 @@
             }
         }
 
-        /* Mode paysage */
         @media (orientation: landscape) {
             .video-container {
                 height: calc(100vh - 60px);
@@ -526,22 +486,20 @@
                 max-height: none;
             }
         }
-
-        /* Désactiver le zoom sur iOS */
-        input, select, textarea {
-            font-size: 16px;
-        }
     </style>
+    
+    <!-- Inline PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIldhdmVTdHJlYW0gSVBUViIsCiAgInNob3J0X25hbWUiOiAiV2F2ZVN0cmVhbSIsCiAgImRlc2NyaXB0aW9uIjogIkxlY3RldXIgSVBUViBhdmVjIHN1cHBvcnQgTTNVL00zVTgiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzBhMGEwYSIsCiAgInRoZW1lX2NvbG9yIjogIiNlNTA5MTQiLAogICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9mbGF0aWNvbnMvaWNvbnMvdHYuc3ZnIiwKICAgICAgInNpemVzIjogIjcyeDcyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2ZsYXRpY29ucy9pY29ucy90di5zdmciLAogICAgICAic2l6ZXMiOiAiOTZ4OTYiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvZ2gvZmxhdGljb25zL2ljb25zL3R2LnN2ZyIsCiAgICAgICJzaXplcyI6ICIxMjh4MTI4IiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2ZsYXRpY29ucy9pY29ucy90di5zdmciLAogICAgICAic2l6ZXMiOiAiMTQ0eDE0NCIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9LAogICAgewogICAgICAic3JjIjogImh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9naC9mbGF0aWNvbnMvaWNvbnMvdHYuc3ZnIiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvZ2gvZmxhdGljb25zL2ljb25zL3R2LnN2ZyIsCiAgICAgICJzaXplcyI6ICIzODR4Mzg0IiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2ZsYXRpY29ucy9pY29ucy90di5zdmciLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
 </head>
 <body>
-    <!-- Écran de chargement initial -->
+    <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="spinner"></div>
         <h2 style="margin-bottom: 10px;">WaveStream</h2>
-        <p style="color: var(--text-secondary);">Chargement de l'application...</p>
+        <p style="color: var(--text-secondary);">Chargement...</p>
     </div>
 
-    <!-- En-tête de l'application -->
+    <!-- App Header -->
     <header class="app-header">
         <div class="logo-container">
             <div class="logo">WaveStream🏴‍☠️</div>
@@ -553,15 +511,15 @@
         </div>
     </header>
 
-    <!-- Conteneur principal -->
+    <!-- Main Container -->
     <div class="app-container">
-        <!-- Lecteur vidéo -->
+        <!-- Video Player -->
         <div class="video-container">
             <div class="video-overlay" id="videoOverlay">
                 <i class="fas fa-tv" style="font-size: 48px; margin-bottom: 20px; color: var(--primary);"></i>
-                <h3 style="margin-bottom: 10px;">Aucune chaîne sélectionnée</h3>
+                <h3 style="margin-bottom: 10px;">Aucune chaîne</h3>
                 <p style="color: var(--text-secondary); max-width: 300px;">
-                    Chargez une playlist M3U ou sélectionnez une chaîne pour commencer
+                    Chargez une playlist M3U pour commencer
                 </p>
             </div>
             <video
@@ -575,12 +533,12 @@
                 poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHZpZXdCb3g9IjAgMCAxMjgwIDcyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNNDgwIDI4MEw2NDAgNDAwIDQ4MCA1MjBWMjgwWiIgZmlsbD0iI2U1MDkxNCIvPjwvc3ZnPg=="
             >
                 <p class="vjs-no-js">
-                    Activez JavaScript pour lire les vidéos. Votre navigateur ne supporte pas la lecture vidéo.
+                    Activez JavaScript pour lire les vidéos.
                 </p>
             </video>
         </div>
 
-        <!-- Contrôles rapides -->
+        <!-- Quick Controls -->
         <div class="quick-controls">
             <button class="control-btn" id="btnLoadPlaylist">
                 <i class="fas fa-folder-open"></i>
@@ -596,15 +554,14 @@
             </button>
         </div>
 
-        <!-- Barre de recherche -->
+        <!-- Search -->
         <div class="search-container">
-            <input type="text" id="searchInput" class="search-box" placeholder="🔍 Rechercher une chaîne..." autocomplete="off">
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 Rechercher une chaîne...">
         </div>
 
-        <!-- Liste des chaînes -->
+        <!-- Playlist -->
         <div class="playlist-container">
             <div class="channel-list" id="channelList">
-                <!-- Les chaînes seront ajoutées ici dynamiquement -->
                 <div class="empty-state">
                     <i class="fas fa-satellite-dish"></i>
                     <h3 style="margin-bottom: 10px;">Aucune playlist</h3>
@@ -614,7 +571,7 @@
         </div>
     </div>
 
-    <!-- Menu flottant -->
+    <!-- Floating Menu -->
     <div class="floating-menu">
         <button class="floating-btn" id="btnScrollTop">
             <i class="fas fa-arrow-up"></i>
@@ -624,7 +581,7 @@
         </button>
     </div>
 
-    <!-- Menu latéral -->
+    <!-- Side Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
     <div class="side-menu" id="sideMenu">
         <h3 style="margin-bottom: 20px; color: var(--primary);">
@@ -636,12 +593,12 @@
             
             <button class="control-btn" style="margin-bottom: 10px;" id="btnClearCache">
                 <i class="fas fa-trash"></i>
-                Effacer le cache
+                Effacer cache
             </button>
             
             <button class="control-btn" style="margin-bottom: 10px;" id="btnExportPlaylist">
                 <i class="fas fa-download"></i>
-                Exporter playlist
+                Exporter
             </button>
             
             <button class="control-btn" style="margin-bottom: 20px;" id="btnInstallApp">
@@ -675,10 +632,10 @@
         </button>
     </div>
 
-    <!-- Toast notifications -->
+    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
-    <!-- Input file caché -->
+    <!-- Hidden File Input -->
     <input type="file" id="m3uFile" accept=".m3u,.m3u8" style="display: none;" multiple>
 
     <!-- Scripts -->
@@ -712,38 +669,39 @@
                             enableLowInitialPlaylist: true,
                             smoothQualityChange: true,
                             overrideNative: true
-                        },
-                        nativeAudioTracks: false,
-                        nativeVideoTracks: false
+                        }
                     }
                 });
                 
-                // Gérer les erreurs de lecture
+                // Gérer les erreurs
                 player.on('error', handlePlayerError);
                 
                 // Charger les playlists sauvegardées
                 await loadSavedPlaylists();
                 
-                // Mettre à jour l'heure actuelle
+                // Mettre à jour l'heure
                 updateCurrentTime();
                 setInterval(updateCurrentTime, 60000);
                 
-                // Gérer l'installation PWA
+                // PWA Installation
                 setupPWAInstall();
                 
-                // Gérer les événements
+                // Événements
                 setupEventListeners();
                 
-                // Masquer l'écran de chargement
+                // Masquer loading screen
                 setTimeout(() => {
                     document.getElementById('loadingScreen').classList.add('hidden');
                 }, 500);
                 
                 showToast('Application prête !', 'success');
                 
+                // Inline Service Worker Registration
+                registerServiceWorker();
+                
             } catch (error) {
                 console.error('Erreur initialisation:', error);
-                showToast('Erreur initialisation: ' + error.message, 'error');
+                showToast('Erreur: ' + error.message, 'error');
             }
         }
         
@@ -759,7 +717,7 @@
                 } else if (allChannels.length > 0) {
                     loadChannel(allChannels[0]);
                 } else {
-                    showToast('Chargez d\'abord une playlist', 'error');
+                    showToast('Chargez d\'abord une playlist', 'warning');
                 }
             });
             
@@ -791,28 +749,46 @@
             // Fichier M3U
             document.getElementById('m3uFile').addEventListener('change', handleM3UFile);
             
-            // Gérer le mode hors ligne
+            // Online/Offline
             window.addEventListener('online', () => {
                 showToast('Connexion rétablie', 'success');
             });
             
             window.addEventListener('offline', () => {
-                showToast('Mode hors ligne activé', 'warning');
+                showToast('Mode hors ligne', 'warning');
             });
             
-            // Prévenir la fermeture accidentelle
-            window.addEventListener('beforeunload', (e) => {
-                if (currentChannel) {
-                    e.preventDefault();
-                    e.returnValue = 'Vous êtes en train de regarder une chaîne. Quitter ?';
-                }
-            });
-            
-            // Touches claviers
+            // Touches clavier
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') closeMenu();
                 if (e.key === 'F11') player.requestFullscreen();
             });
+        }
+        
+        // Fonction generateChannelId corrigée (sans btoa)
+        function generateChannelId(name, url) {
+            // Créer un hash robuste sans btoa
+            let hash = 0;
+            
+            // Nettoyer le nom des caractères non-ASCII
+            const cleanName = name
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^\x00-\xFF]/g, '');
+            
+            const str = cleanName + url;
+            
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            
+            // Extraire une partie de l'URL pour plus d'unicité
+            const urlPart = url.split('//')[1]?.split('/')[0]?.replace(/[^a-z0-9]/gi, '').substring(0, 6) || 'url';
+            const namePart = cleanName.substring(0, 3).replace(/[^a-z0-9]/gi, 'ch');
+            
+            return `${namePart}_${urlPart}_${Math.abs(hash).toString(36).substring(0, 8)}`;
         }
         
         async function handleM3UFile(event) {
@@ -826,17 +802,17 @@
                     const content = await readFileAsText(file);
                     const playlist = parseM3U(content, file.name);
                     
-                    // Sauvegarder dans le cache local
+                    // Sauvegarder dans le cache
                     savePlaylistToCache(playlist);
                     
-                    // Ajouter aux chaînes existantes
+                    // Ajouter aux chaînes
                     allChannels = [...allChannels, ...playlist.channels];
                     
                     showToast(`${playlist.channels.length} chaînes ajoutées`, 'success');
                     
                 } catch (error) {
-                    console.error('Erreur chargement fichier:', error);
-                    showToast(`Erreur avec ${file.name}: ${error.message}`, 'error');
+                    console.error('Erreur chargement:', error);
+                    showToast(`Erreur avec ${file.name}`, 'error');
                 }
             }
             
@@ -844,7 +820,7 @@
             updateChannelList(allChannels);
             updateChannelCount();
             
-            // Réinitialiser l'input file
+            // Réinitialiser l'input
             event.target.value = '';
         }
         
@@ -858,18 +834,40 @@
                 line = line.trim();
                 
                 if (line.startsWith('#EXTINF:')) {
-                    // Extraire les infos
-                    const nameMatch = line.match(/,(.*)$/);
+                    // Extraire nom
+                    const lastCommaIndex = line.lastIndexOf(',');
+                    let channelName = lastCommaIndex !== -1 ? 
+                        line.substring(lastCommaIndex + 1).trim() : 'Chaîne inconnue';
+                    
+                    // Nettoyer le nom
+                    channelName = channelName
+                        .normalize('NFD')
+                        .replace(/[\u0300-\u036f]/g, '')
+                        .replace(/[^\x00-\xFF]/g, ' ')
+                        .trim();
+                    
+                    // Extraire logo
                     const logoMatch = line.match(/tvg-logo="([^"]*)"/i);
+                    let logoUrl = null;
+                    if (logoMatch && logoMatch[1]) {
+                        try {
+                            logoUrl = encodeURI(logoMatch[1]);
+                        } catch (e) {
+                            console.warn('URL logo invalide:', logoMatch[1]);
+                        }
+                    }
+                    
+                    // Extraire groupe
                     const groupMatch = line.match(/group-title="([^"]*)"/i);
+                    const channelGroup = groupMatch ? groupMatch[1] : group;
                     
                     currentChannel = {
-                        name: nameMatch ? nameMatch[1].trim() : 'Chaîne inconnue',
-                        logo: logoMatch ? logoMatch[1] : null,
-                        group: groupMatch ? groupMatch[1] : group
+                        name: channelName,
+                        logo: logoUrl,
+                        group: channelGroup
                     };
                     
-                } else if (line.startsWith('http')) {
+                } else if (line.startsWith('http') && currentChannel.name) {
                     currentChannel.url = line;
                     currentChannel.id = generateChannelId(currentChannel.name, line);
                     currentChannel.source = filename;
@@ -879,7 +877,7 @@
             }
             
             return {
-                name: filename.replace('.m3u', '').replace('.m3u8', ''),
+                name: filename.replace(/\.m3u8?$/i, ''),
                 channels: channels,
                 timestamp: Date.now()
             };
@@ -910,20 +908,28 @@
             
             let html = '';
             
-            // Créer les cartes de chaînes
             for (const [groupName, groupChannels] of Object.entries(groups)) {
                 html += `
                     <div class="group-header" style="grid-column: 1/-1; margin: 15px 0 10px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
-                        <strong>${groupName}</strong> 
+                        <strong>${groupName}</strong>
                         <span style="float: right; color: var(--text-secondary);">${groupChannels.length}</span>
                     </div>
                 `;
                 
                 groupChannels.forEach(channel => {
                     const isActive = currentChannel && currentChannel.id === channel.id;
-                    const logoHtml = channel.logo ? 
-                        `<img src="${channel.logo}" alt="${channel.name}" onerror="this.parentElement.innerHTML='<div class=\\'fallback\\'><i class=\\'fas fa-tv\\'></i></div>';">` : 
-                        '<div class="fallback"><i class="fas fa-tv"></i></div>';
+                    
+                    // Gestion des logos avec fallback
+                    let logoHtml = '';
+                    if (channel.logo) {
+                        logoHtml = `
+                            <img src="${channel.logo}" alt="${channel.name}"
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\"fallback\"><i class=\"fas fa-tv\"></i></div>';"
+                                 loading="lazy">
+                        `;
+                    } else {
+                        logoHtml = '<div class="fallback"><i class="fas fa-tv"></i></div>';
+                    }
                     
                     html += `
                         <div class="channel-item ${isActive ? 'active playing' : ''}" 
@@ -936,33 +942,24 @@
                                 <div class="channel-name">${channel.name}</div>
                                 <div class="channel-group">${channel.group}</div>
                             </div>
-                            <div class="channel-status ${isActive ? '' : 'offline'}"></div>
                         </div>
                     `;
                 });
             }
             
             container.innerHTML = html;
-            
-            // Si on a une chaîne active, la faire apparaître à l'écran
-            if (currentChannel) {
-                const activeElement = document.querySelector(`[data-id="${currentChannel.id}"]`);
-                if (activeElement) {
-                    activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
         }
         
-        function selectChannel(channelId) {
+        // Fonction globale pour sélectionner une chaîne
+        window.selectChannel = function(channelId) {
             const channel = allChannels.find(c => c.id === channelId);
             if (!channel) return;
-            
             loadChannel(channel);
-        }
+        };
         
         function loadChannel(channel) {
             if (!channel || !channel.url) {
-                showToast('URL de chaîne invalide', 'error');
+                showToast('URL invalide', 'error');
                 return;
             }
             
@@ -980,17 +977,17 @@
                 });
                 
                 player.play().catch(e => {
-                    console.log('Lecture nécessite interaction:', e);
+                    console.log('Lecture nécessite interaction');
                     showToast('Cliquez sur le bouton lecture', 'warning');
                 });
                 
-                // Sauvegarder la dernière chaîne regardée
+                // Sauvegarder la dernière chaîne
                 localStorage.setItem('lastChannel', JSON.stringify(channel));
                 
                 showToast(`Chargement: ${channel.name}`, 'success');
                 
             } catch (error) {
-                console.error('Erreur chargement chaîne:', error);
+                console.error('Erreur chargement:', error);
                 showToast(`Erreur: ${error.message}`, 'error');
             }
         }
@@ -1000,10 +997,8 @@
             console.error('Erreur player:', error);
             
             if (error && error.code === 4) {
-                // MEDIA_ERR_SRC_NOT_SUPPORTED
-                showToast('Format non supporté, tentative avec source suivant...', 'warning');
+                showToast('Format non supporté, essai suivant...', 'warning');
                 
-                // Essayer la chaîne suivante
                 if (allChannels.length > 1) {
                     const currentIndex = allChannels.findIndex(c => c.id === currentChannel.id);
                     const nextIndex = (currentIndex + 1) % allChannels.length;
@@ -1058,7 +1053,7 @@
                 return;
             }
             
-            // Créer un fichier M3U
+            // Créer fichier M3U
             let m3uContent = '#EXTM3U\n';
             
             allChannels.forEach(channel => {
@@ -1103,10 +1098,6 @@
             }, 3000);
         }
         
-        function generateChannelId(name, url) {
-            return btoa(name + url).replace(/[^a-zA-Z0-9]/g, '');
-        }
-        
         function readFileAsText(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -1128,7 +1119,7 @@
                         allChannels = [...allChannels, ...playlist.channels];
                     });
                     
-                    // Charger la dernière chaîne regardée
+                    // Charger dernière chaîne
                     const lastChannel = localStorage.getItem('lastChannel');
                     if (lastChannel) {
                         const channel = JSON.parse(lastChannel);
@@ -1156,20 +1147,17 @@
             window.addEventListener('beforeinstallprompt', (e) => {
                 e.preventDefault();
                 deferredPrompt = e;
-                
-                // Afficher le bouton d'installation dans le menu
                 document.getElementById('btnInstallApp').style.display = 'flex';
             });
             
-            // Vérifier si déjà installé
             if (window.matchMedia('(display-mode: standalone)').matches) {
-                console.log('Application déjà installée');
+                console.log('Déjà installé');
             }
         }
         
         async function installPWA() {
             if (!deferredPrompt) {
-                showToast('L\'application est déjà installée ou non disponible', 'info');
+                showToast('App déjà installée ou non disponible', 'info');
                 return;
             }
             
@@ -1177,28 +1165,66 @@
             const { outcome } = await deferredPrompt.userChoice;
             
             if (outcome === 'accepted') {
-                showToast('Application installée avec succès !', 'success');
+                showToast('Application installée !', 'success');
                 deferredPrompt = null;
             }
             
             closeMenu();
         }
         
-        // Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
+        // Service Worker inline
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                // Créer un Service Worker inline
+                const swContent = `
+self.addEventListener('install', event => {
+  console.log('[Service Worker] Installation');
+  event.waitUntil(
+    caches.open('wavestream-v1').then(cache => {
+      return cache.addAll([
+        './',
+        'https://vjs.zencdn.net/8.6.1/video.min.js',
+        'https://vjs.zencdn.net/8.6.1/video-js.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+      ]);
+    })
+  );
+});
+
+self.addEventListener('activate', event => {
+  console.log('[Service Worker] Activation');
+});
+
+self.addEventListener('fetch', event => {
+  // Ne pas mettre en cache les flux M3U/M3U8
+  if (event.request.url.includes('.m3u') || 
+      event.request.url.includes('.m3u8') ||
+      event.request.url.includes('/live/') ||
+      event.request.url.includes('/stream/')) {
+    return fetch(event.request);
+  }
+  
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
+  );
+});
+                `;
+                
+                // Créer un blob URL pour le Service Worker
+                const blob = new Blob([swContent], { type: 'application/javascript' });
+                const swURL = URL.createObjectURL(blob);
+                
+                navigator.serviceWorker.register(swURL)
                     .then(registration => {
-                        console.log('ServiceWorker enregistré:', registration.scope);
+                        console.log('Service Worker enregistré:', registration.scope);
                     })
                     .catch(error => {
-                        console.log('Erreur ServiceWorker:', error);
+                        console.log('Erreur Service Worker:', error);
                     });
-            });
+            }
         }
-        
-        // Exposer les fonctions globales
-        window.selectChannel = selectChannel;
     </script>
 </body>
 </html>
